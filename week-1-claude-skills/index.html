@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sign up</title>
+  <style>
+    :root {
+      --bg: #f5f6f8;
+      --card: #ffffff;
+      --text: #1a1d23;
+      --muted: #4a5160;
+      --border: #6b7280;
+      --accent: #1d4ed8;
+      --accent-hover: #1e40af;
+      --error: #b91c1c;
+      --success: #15803d;
+      --focus: #f59e0b;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #111318;
+        --card: #1b1f27;
+        --text: #eef0f4;
+        --muted: #b6bcc8;
+        --border: #8b93a3;
+        --accent: #3b82f6;
+        --accent-hover: #60a5fa;
+        --error: #f87171;
+        --success: #4ade80;
+      }
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 16px;
+      background: var(--bg);
+      color: var(--text);
+      font: 16px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif;
+    }
+    main {
+      width: 100%;
+      max-width: 400px;
+      background: var(--card);
+      padding: 32px 24px;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgb(0 0 0 / 0.08);
+    }
+    h1 { margin: 0 0 4px; font-size: 1.5rem; }
+    .intro { margin: 0 0 24px; color: var(--muted); }
+    .field { margin-bottom: 18px; }
+    label { display: block; font-weight: 600; margin-bottom: 6px; }
+    .hint { display: block; font-size: 0.875rem; color: var(--muted); margin-bottom: 6px; }
+    input[type="text"], input[type="email"], input[type="password"] {
+      width: 100%;
+      padding: 10px 12px;
+      font: inherit;
+      color: var(--text);
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+    }
+    input[aria-invalid="true"] { border: 2px solid var(--error); }
+    .checkbox { display: flex; gap: 8px; align-items: flex-start; }
+    .checkbox input { width: 20px; height: 20px; margin: 2px 0 0; flex-shrink: 0; }
+    .checkbox label { font-weight: 400; margin: 0; }
+    .error {
+      display: block;
+      margin-top: 6px;
+      font-size: 0.875rem;
+      color: var(--error);
+    }
+    .error:empty { display: none; }
+    .error::before { content: "⚠ "; }
+    button {
+      width: 100%;
+      padding: 12px;
+      font: inherit;
+      font-weight: 600;
+      color: #fff;
+      background: var(--accent);
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    button:hover { background: var(--accent-hover); }
+    :focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+    #status { margin-top: 16px; font-weight: 600; }
+    #status.success { color: var(--success); }
+    .visually-hidden {
+      position: absolute; width: 1px; height: 1px; overflow: hidden;
+      clip: rect(0 0 0 0); white-space: nowrap;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Create your account</h1>
+    <p class="intro">All fields are required.</p>
+
+    <form id="signup" novalidate>
+      <div class="field">
+        <label for="name">Full name</label>
+        <input id="name" name="name" type="text" autocomplete="name" required
+               aria-describedby="name-error">
+        <span class="error" id="name-error"></span>
+      </div>
+
+      <div class="field">
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" autocomplete="email" required
+               aria-describedby="email-error">
+        <span class="error" id="email-error"></span>
+      </div>
+
+      <div class="field">
+        <label for="password">Password</label>
+        <span class="hint" id="password-hint">At least 8 characters.</span>
+        <input id="password" name="password" type="password" autocomplete="new-password"
+               required minlength="8" aria-describedby="password-hint password-error">
+        <span class="error" id="password-error"></span>
+      </div>
+
+      <div class="field">
+        <div class="checkbox">
+          <input id="terms" name="terms" type="checkbox" required aria-describedby="terms-error">
+          <label for="terms">I agree to the terms of service</label>
+        </div>
+        <span class="error" id="terms-error"></span>
+      </div>
+
+      <button type="submit">Sign up</button>
+      <p id="status" role="status" aria-live="polite"></p>
+    </form>
+  </main>
+
+  <script>
+    const form = document.getElementById('signup');
+    const status = document.getElementById('status');
+
+    const rules = {
+      name: el => el.value.trim() ? '' : 'Please enter your name.',
+      email: el => !el.value.trim() ? 'Please enter your email.'
+        : el.validity.typeMismatch ? 'Please enter a valid email, like name@example.com.' : '',
+      password: el => el.value.length >= 8 ? '' : 'Password must be at least 8 characters.',
+      terms: el => el.checked ? '' : 'You must agree to the terms to continue.',
+    };
+
+    function validate(el) {
+      const msg = rules[el.name](el);
+      document.getElementById(el.id + '-error').textContent = msg;
+      el.setAttribute('aria-invalid', msg ? 'true' : 'false');
+      return !msg;
+    }
+
+    // Re-check a field once it has been marked invalid, so errors clear as the user fixes them
+    form.addEventListener('input', e => {
+      if (e.target.getAttribute('aria-invalid') === 'true') validate(e.target);
+    });
+
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      status.textContent = '';
+      status.className = '';
+      const fields = [...form.elements].filter(el => rules[el.name]);
+      const invalid = fields.filter(el => !validate(el));
+
+      if (invalid.length) {
+        status.textContent = `Please fix ${invalid.length} error${invalid.length > 1 ? 's' : ''} above.`;
+        invalid[0].focus();
+        return;
+      }
+      status.textContent = `Thanks, ${form.name.value.trim()}! Your account has been created.`;
+      status.className = 'success';
+      form.reset();
+      fields.forEach(el => el.removeAttribute('aria-invalid'));
+    });
+  </script>
+</body>
+</html>

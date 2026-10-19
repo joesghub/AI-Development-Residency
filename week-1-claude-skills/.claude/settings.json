@@ -1,0 +1,29 @@
+{
+  "permissions": {
+    "ask": ["Skill"]
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Skill",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/usr/bin/python3 \"$CLAUDE_PROJECT_DIR/.claude/hooks/log-skill.py\""
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Skill",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/usr/bin/python3 \"$CLAUDE_PROJECT_DIR/.claude/hooks/log-skill.py\""
+          }
+        ]
+      }
+    ]
+  }
+}
