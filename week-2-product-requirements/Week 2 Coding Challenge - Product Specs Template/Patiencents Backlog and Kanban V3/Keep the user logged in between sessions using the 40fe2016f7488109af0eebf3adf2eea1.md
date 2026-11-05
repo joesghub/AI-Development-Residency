@@ -1,0 +1,11 @@
+# Keep the user logged in between sessions using the phone's secure storage
+
+Build Phase: Phase 0
+Change: Updated
+Epic: Epic 0: Platform Foundation
+Feature: 0.2 User Accounts
+Priority: Must
+Status: Backlog
+Task ID: E0-F2-T4
+Task Type: Frontend
+User Story: As a user, I want to create an account and log in securely on my phone, so that my financial information stays private and available only to me.

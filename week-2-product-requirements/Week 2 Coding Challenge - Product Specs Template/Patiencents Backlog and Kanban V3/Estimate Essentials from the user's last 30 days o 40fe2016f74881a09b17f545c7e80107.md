@@ -1,0 +1,13 @@
+# Estimate Essentials from the user's last 30 days of Essentials spending
+
+Build Phase: Phase 1
+Change: Unchanged
+Epic: Epic 1: Effortless Money Tracking
+Feature: 1.5 Today's Budget
+Pain Points: P2
+Priority: Must
+Status: Backlog
+Task ID: E1-F5-T2
+Task Type: Backend
+Use Cases: UC1, UC3
+User Story: As a user with time blindness, I want one daily number for my Usuals, so that I can decide at a glance without thinking about the whole month.

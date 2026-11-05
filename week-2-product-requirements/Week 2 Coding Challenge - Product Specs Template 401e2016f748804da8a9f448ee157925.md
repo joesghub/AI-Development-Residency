@@ -58,3 +58,19 @@ Version 2
 [Patiencents Backlog and Kanban Board](Week%202%20Coding%20Challenge%20-%20Product%20Specs%20Template/Patiencents%20Backlog%20and%20Kanban%20Board%20405e2016f74880859b22d7c6dbee1c95.csv)
 
 [Patiencents Pitch Deck](Week%202%20Coding%20Challenge%20-%20Product%20Specs%20Template/Patiencents%20Pitch%20Deck%20405e2016f74880e0a97bc5a89394f5e7.md)
+
+---
+
+Version 3
+
+[**Build Plan: MVP #1 (v3)**](Week%202%20Coding%20Challenge%20-%20Product%20Specs%20Template/Build%20Plan%20MVP%20#1%20(v3)%2040fe2016f74880d39fcfe8b06cba8396.md)
+
+[MVP #1 Vision and Scope (v3)](Week%202%20Coding%20Challenge%20-%20Product%20Specs%20Template/MVP%20#1%20Vision%20and%20Scope%20(v3)%2040fe2016f74880979d7bcc124bcd42d8.md)
+
+[Epics, Features, and Tasks: MVP #1 (v3)](Week%202%20Coding%20Challenge%20-%20Product%20Specs%20Template/Epics,%20Features,%20and%20Tasks%20MVP%20#1%20(v3)%2040fe2016f74880b79bc4e8b4133887a1.md)
+
+[MMP Vision and Scope (v3)](Week%202%20Coding%20Challenge%20-%20Product%20Specs%20Template/MMP%20Vision%20and%20Scope%20(v3)%2040fe2016f748807393a6e8bd34bb8d82.md)
+
+[Patiencents Backlog and Kanban V3](Week%202%20Coding%20Challenge%20-%20Product%20Specs%20Template/Patiencents%20Backlog%20and%20Kanban%20V3%2040fe2016f74880bda276efb55f3ec1ea.csv)
+
+[Patiencents Pitch Deck.pdf](Week%202%20Coding%20Challenge%20-%20Product%20Specs%20Template/Patiencents_Pitch_Deck.pdf)
